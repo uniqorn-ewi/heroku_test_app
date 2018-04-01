@@ -1,24 +1,15 @@
-# README
+# DIC Rails入門シリーズ課題2【Blog機能作成】
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+要件:
 
-* Ruby version
+* blog機能を作成
 
-* System dependencies
+* 投稿・投稿確認・編集・一覧表示・削除機能がある
 
-* Configuration
+* 1文字以上140文字以下しか投稿できない
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* 140文字より多い文字数、あるいは内容が空で登録した場合には、エラーメッセージを表示
 
 * ...
