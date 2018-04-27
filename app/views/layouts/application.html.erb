@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HerokuTestApp</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>BootstrapTask</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header>
+    <ul>
+      <li><%= link_to "トップページ", '/' %></li>
+      <li><%= link_to "ブログ一覧", blogs_path %></li>
+      <li><%= link_to '新規ブログを作成する', new_blog_path %></li>
+    </ul>
+  </header>
+<%= yield %>
+  <footer>
+    <p>Dive into Code test application</p>
+  </footer>
+</body>
 </html>

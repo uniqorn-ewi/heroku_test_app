@@ -1,8 +1,12 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   
+  def top
+    render 'top'
+  end
+  
   def index
-    @blogs = Blog.all
+    @blogs = Blog.order(:created_at)
   end
   
   def new
