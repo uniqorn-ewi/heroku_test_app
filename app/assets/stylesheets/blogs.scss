@@ -5,46 +5,9 @@ ul {
   padding: 0;
 }
 
-/*
-.header {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #fff;
-  padding-top: 8px;
-}
-
-.menu {
-  background-color: #012f4b;
-  color: #fff;
-}
-.menu li {
-  padding: 5% 10%;
-  text-align: center;
-}
-.contents .row-A li {
-  background-color: #f3a7ab;
-  color: #fff;
-  padding: 10% 10%;
-  box-sizing: border-box;
-  border: solid 1px #fff;
-  text-align: left;
-}
-.topic .row-B li {
-  margin: 1%;
-  border-bottom: dotted 1px #333333;
-  text-align: left;
-}
-*/
-
 .container {
   margin-top: 20px;
   padding-bottom: 100px;
-}
-
-div, p { /*
-  border-style: solid;
-  border-width: 1px; */
 }
 
 div.blog-panel {
@@ -66,17 +29,10 @@ div#error_explanation li {
   font-size: 14px;
 }
 .commit-btn {
-/*position: relative;
-  margin-top: 0px;*/
   float: left;
-/*margin-left: 123px;*/
 }
 .back-btn {
   margin-left: 12px;
-/*position: relative;
-  margin-top: 0px;
-  float: right;
-  margin-right: 140px;*/
 }
 .notice {
   width: 100%;
@@ -85,4 +41,3 @@ div#error_explanation li {
   font-size: 20px;
   color: #1400ffab;
 }
-
