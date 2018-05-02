@@ -1,28 +1,50 @@
-<h1>Sign up</h1>
-
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
-    <ul>
+<h1>サインアップ</h1>
+<%= form_with(model: @user, local: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @user.errors.count %>件のエラーがあります。</h3>
+      <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-    </ul>
+      </ul>
+    </div>
+  <% end %>
+  <% flash.each do |key, value| %>
+    <h3><%= content_tag(:div, value, class: "#{key}") %></h3>
+  <% end %>
+  
+  <div class="user">
+    <%= f.label '名前' %>
+    <% if @user.errors.messages[:name].size == 0 %>
+      <br>
+    <% end %>
+    <%= f.text_field :name %>
   </div>
-<% end %>
-
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create my account" %>
+  
+  <div class="user">
+    <%= f.label 'メールアドレス' %>
+    <% if @user.errors.messages[:email].size == 0 %>
+      <br>
+    <% end %>
+    <%= f.email_field :email %>
+  </div>
+  
+  <div class="user">
+    <%= f.label 'パスワード' %>
+    <% if @user.errors.messages[:password].size == 0 %>
+      <br>
+    <% end %>
+    <%= f.password_field :password %>
+  </div>
+  
+  <div class="user">
+    <%= f.label 'パスワード（再入力）' %>
+    <% if @user.errors.messages[:password_confirmation].size == 0 %>
+      <br>
+    <% end %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <%= f.submit "アカウント作成" %>
 <% end %>
