@@ -11,17 +11,6 @@
     </div>
   <% end %>
   
-  <% if flash.any? %>
-    <div id="error_explanation">
-      <h3>エラーがあります。</h3>
-      <ul>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:li, value, class: "#{key}") %>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <div class="user">
     <%= f.label '名前' %>
     <% if @user.errors.messages[:name].size == 0 %>
