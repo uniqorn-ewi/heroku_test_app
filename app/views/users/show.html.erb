@@ -7,6 +7,7 @@
       <div class="col-xs-12 col-md-6 blog-panel">
         <h2><%= blog.title %></h2>
         <p><%= blog.content %></p>
+        <p>投稿者: <%= blog.user.name %></p>
         <p><%= blog.created_at %></p>
         <div class="blog-links">
           <%= link_to "お気に入り解除する", favorite_path(blog_id: blog.id), \
