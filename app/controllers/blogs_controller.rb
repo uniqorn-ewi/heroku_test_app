@@ -15,18 +15,17 @@ class BlogsController < ApplicationController
       @blog = Blog.new(blog_params)
     else
       @blog = Blog.new
+      @blog.user_id = current_user.id
     end
   end
 
   def confirm
     @blog = Blog.new(blog_params)
-    @blog.user_id = current_user.id
     render 'new' if @blog.invalid?
   end
 
   def create
     @blog = Blog.new(blog_params)
-    @blog.user_id = current_user.id
     if @blog.save
       NotifyMailer.notify_mail(current_user).deliver
       redirect_to blogs_path, notice: "ブログを作成しました！"
@@ -57,7 +56,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :user_id)
   end
 
   def set_blog

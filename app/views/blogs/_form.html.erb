@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  
+  <%= form.hidden_field :user_id %>
   <div class="blog">
     <%= form.label 'タイトル' %>
     <% if @blog.errors.messages[:title].size == 0 %>
