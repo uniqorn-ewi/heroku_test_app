@@ -33,6 +33,9 @@ gem 'bcrypt', '3.1.11'
 
 gem 'dotenv-rails'
 
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -42,6 +45,12 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # pryをRailsコンソールで使用
+  gem 'pry-rails'
+  # Hirb （データを表形式で表示）
+  gem 'hirb'
+  gem 'hirb-unicode'
+
 end
 
 group :development do

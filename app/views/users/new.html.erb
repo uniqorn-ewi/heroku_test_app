@@ -43,5 +43,17 @@
     <%= f.password_field :password_confirmation %>
   </div>
   
+  <div class="user">
+    <%= f.label 'アイコン画像' %>
+    <br>
+    <!-- 確認画面から新規作成画面に戻った時に、 -->
+    <!-- アップロードした画像を表示させるための記述 -->
+    <p><%= image_tag(@user.avatar.url) if @user.avatar.url %></p>
+    <%= f.file_field :avatar, id: :user_avatar %>
+    <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+    <%= f.hidden_field :avatar_cache %>
+    <%= hidden_field_tag :"cache[avatar]", @user.avatar.cache_name %>
+  </div>
+  
   <%= f.submit "アカウント作成" %>
 <% end %>

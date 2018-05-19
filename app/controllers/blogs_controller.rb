@@ -12,7 +12,14 @@ class BlogsController < ApplicationController
 
   def new
     if params[:back]
+      # テーブルの中に、imageのカラム（画像アップロード用のカラム）以外のものがある場合、
+      # new(xxxx_params)にする。
       @blog = Blog.new(blog_params)
+      # 画像保存（create）の際に、キャッシュから画像を復元してnewに入れる
+      # newに戻る際も、createと同様に復元処理が必要となる。
+      unless params[:cache][:image].empty?
+        @blog.image.retrieve_from_cache! params[:cache][:image]
+      end
     else
       @blog = Blog.new
       @blog.user_id = current_user.id
@@ -25,7 +32,13 @@ class BlogsController < ApplicationController
   end
 
   def create
+    # テーブルの中に、imageのカラム（画像アップロード用のカラム）以外のものがある場合、
+    # new(xxxx_params)にする。
     @blog = Blog.new(blog_params)
+    # 画像保存（create）の際に、キャッシュから画像を復元してnewに入れる
+    unless params[:cache][:image].empty?
+      @blog.image.retrieve_from_cache! params[:cache][:image]
+    end
     if @blog.save
       NotifyMailer.notify_mail(current_user).deliver
       redirect_to blogs_path, notice: "ブログを作成しました！"
@@ -56,7 +69,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content, :user_id)
+    params.require(:blog).permit(:title, :content, :user_id, :image, :image_cache)
   end
 
   def set_blog

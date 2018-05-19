@@ -24,5 +24,15 @@
     <% end %>
     <%= form.text_field :content %>
   </div>
+  <div class="blog">
+    <%= form.label '画像' %>
+    <br>
+    <!-- 確認画面から新規作成画面に戻った時に、 -->
+    <!-- アップロードした画像を表示させるための記述 -->
+    <p><%= image_tag(@blog.image.url) if @blog.image.url %></p>
+    <%= form.file_field :image, id: :blog_image %>
+    <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+    <%= form.hidden_field :image_cache %>
+  </div>
   <%= form.submit '投稿' %>
 <% end %>
