@@ -8,13 +8,13 @@
 
         <h2><%= blog.title %></h2>
         <p><%= blog.content %></p>
-        <% if blog.image.thumb.url %>
+        <% unless blog.image.thumb.file.nil? %>
           <p><%= image_tag(blog.image.thumb.url) %></p>
         <% end %>
 
         <div class="clearfix">
           <div class="avator">
-            <% if blog.user.avatar.thumb.url %>
+            <% unless blog.user.avatar.thumb.file.nil? %>
               <%= image_tag(blog.user.avatar.thumb.url) %>
             <% else %>
               <%= image_tag("/assets/no_image.png") %>

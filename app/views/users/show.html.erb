@@ -1,7 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
 <p>アイコン画像:</p>
-<% if @user.avatar.url %>
+<% unless @user.avatar.file.nil? %>
   <p><%= image_tag(@user.avatar.url) %></p>
 <% else %>
   <p><%= image_tag("/assets/no_image.png") %></p>
@@ -14,13 +14,13 @@
 
         <h2><%= blog.title %></h2>
         <p><%= blog.content %></p>
-        <% if blog.image.url %>
+        <% unless blog.image.file.nil? %>
           <p><%= image_tag(blog.image.url) %></p>
         <% end %>
 
         <div class="clearfix">
           <div class="avator">
-            <% if blog.user.avatar.thumb.url != nil %>
+            <% unless blog.user.avatar.thumb.file.nil? %>
               <%= image_tag(blog.user.avatar.thumb.url) %>
             <% else %>
               <%= image_tag("/assets/no_image.png") %>
