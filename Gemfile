@@ -37,8 +37,6 @@ gem 'dotenv-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
-gem 'infoboxer' # install test 4 heroku
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
