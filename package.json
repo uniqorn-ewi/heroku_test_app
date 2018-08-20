@@ -1,5 +1,5 @@
 {
-  "name": "heroku_test_app",
+  "name": "blogfav",
   "private": true,
   "dependencies": {
     "bootstrap": "3",
