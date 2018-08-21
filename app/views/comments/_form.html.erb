@@ -1,0 +1,23 @@
+<%= form_with(model: [blog, comment]) do |form| %>
+
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= comment.errors.count %>件のエラーがあります。</h3>
+      <ul>
+      <% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="blog">
+    <%= form.label 'コメント' %>
+    <% if comment.errors.messages[:content].size == 0 %>
+      <br>
+    <% end %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit '入力' %>
+<% end %>

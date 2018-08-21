@@ -1,0 +1,9 @@
+$("p.notice").text('');
+$("#comments_area")
+  .html("<%= j(
+           render(
+             'comments/index',
+             { comments: @blog.comments, blog: @blog }
+           )
+         ) %>")
+$("textarea").val('');

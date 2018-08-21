@@ -1,4 +1,5 @@
 <h1>ブログ詳細画面</h1>
+<p class="notice"><%= notice %></p>
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 <% if @blog.image.url %>
@@ -8,11 +9,31 @@
 
 <% unless @blog.user == current_user %>
   <% if @favorite.present? =%>
-    <%= link_to "お気に入り解除する", favorite_path(blog_id: @blog.id), \
-        method: :delete, class: 'btn-danger' %>
+    <%= link_to(
+      "お気に入り解除する",
+      favorite_path(blog_id: @blog.id),
+      method: :delete,
+      class: 'btn-danger'
+    ) %>
   <% else %>
-    <%= link_to "お気に入りする",    favorites_path(blog_id: @blog.id), \
-        method: :post, class: 'btn-primary' %>
+    <%= link_to(
+      "お気に入りする",
+      favorites_path(blog_id: @blog.id),
+      method: :post,
+      class: 'btn-primary'
+    ) %>
   <% end %>
 <% end %>
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+
+<p>コメント一覧</p>
+<div id="comments_area">
+  <%= render(
+    partial: 'comments/index', locals: { comments: @comments, blog: @blog }
+  ) %>
+</div>
+<%= render(
+  partial: 'comments/form', locals: { comment: @comment, blog: @blog }
+) %>
+
+<%= link_to "編集", edit_blog_path(@blog) %> |
+<%= link_to "戻る", blogs_path %>

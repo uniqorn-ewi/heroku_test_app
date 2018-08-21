@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'blogs#top'
 
   resources :blogs do
+    resources :comments
     collection do
       post :confirm
     end

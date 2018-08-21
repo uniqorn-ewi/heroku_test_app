@@ -20,14 +20,22 @@
               <%= image_tag("/assets/no_image.png") %>
             <% end %>
           </div>
+
           <div class="info">投稿者: <%= blog.user.name %>
             <div><%= blog.created_at %></div>
             <div class="blog-links">
               <%= link_to '確認', blog_path(blog.id), class: 'btn-default' %>
               <% if logged_in? && blog.user_id == current_user.id %>
-                <%= link_to '編集', edit_blog_path(blog.id), class: 'btn-info' %> |
-                <%= link_to '削除', blog_path(blog.id), method: :delete, \
-                    data: {confirm: '削除しますか？'},  class: 'btn-danger' %>
+                <%= link_to(
+                  '編集', edit_blog_path(blog.id), class: 'btn-info'
+                ) %> |
+                <%= link_to(
+                  '削除',
+                  blog_path(blog.id),
+                  method: :delete,
+                  data: {confirm: '削除しますか？'},
+                  class: 'btn-danger'
+                ) %>
               <% end %>
             </div>
           </div>
